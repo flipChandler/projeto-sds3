@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.felipesantos.dsvendas.dto.SaleDTO;
+import com.felipesantos.dsvendas.dto.SaleSuccessDTO;
+import com.felipesantos.dsvendas.dto.SaleSumDTO;
 import com.felipesantos.dsvendas.services.SaleService;
 
 @RestController
@@ -30,6 +32,18 @@ public class SaleController {
 	@GetMapping("/nopagination")
 	public ResponseEntity<List<SaleDTO>> findAll() {
 		List<SaleDTO> sales = service.findAll();
+		return ResponseEntity.ok(sales);
+	}
+	
+	@GetMapping("/amount-by-seller")
+	public ResponseEntity<List<SaleSumDTO>> amountGroupedBySeller() {
+		List<SaleSumDTO> sales = service.amountGroupedBySeller();
+		return ResponseEntity.ok(sales);
+	}
+	
+	@GetMapping("/success-by-seller")
+	public ResponseEntity<List<SaleSuccessDTO>> successGroupedBySeller() {
+		List<SaleSuccessDTO> sales = service.successGroupedBySeller();
 		return ResponseEntity.ok(sales);
 	}
 }

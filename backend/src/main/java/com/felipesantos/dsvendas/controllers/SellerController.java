@@ -20,7 +20,7 @@ public class SellerController {
 	
 	@GetMapping
 	public ResponseEntity<List<SellerDTO>> findAll() {
-		List<SellerDTO> list = service.findAll();
-		return ResponseEntity.ok(list);
+		List<SellerDTO> sellers = service.findAll();
+		return ResponseEntity.ok(sellers);
 	}
 }
